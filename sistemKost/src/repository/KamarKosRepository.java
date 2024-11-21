@@ -34,17 +34,14 @@ public class KamarKosRepository extends DatabaseConnection implements Repository
     public void save(KamarKos kamarKos) throws Exception {
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(
-                 "INSERT INTO kamar (nomor_kamar, harga_bulan, status, fasilitas, lokasi, ukuran, daya_listrik, pemilik, no_telp_pemilik) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                 "INSERT INTO kamar (nomor_kamar, harga_bulan, status, fasilitas, ukuran, daya_listrik) VALUES (?, ?, ?, ?, ?, ?)", 
                  Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, kamarKos.getNomorKamar());
             pstmt.setDouble(2, kamarKos.getHargaBulan());
             pstmt.setString(3, kamarKos.getStatus());
             pstmt.setString(4, kamarKos.getFasilitas());
-            pstmt.setString(5, kamarKos.getLokasi());
-            pstmt.setString(6, kamarKos.getUkuran());
-            pstmt.setString(7, kamarKos.getDayaListrik());
-            pstmt.setString(8, kamarKos.getPemilik());
-            pstmt.setString(9, kamarKos.getNoTelpPemilik());
+            pstmt.setString(5, kamarKos.getUkuran());
+            pstmt.setString(6, kamarKos.getDayaListrik());
             pstmt.executeUpdate();
         }
     }
@@ -57,22 +54,16 @@ public void update(KamarKos kamarKos) throws Exception {
              "harga_bulan = ?, " +
              "status = ?, " +
              "fasilitas = ?, " +
-             "lokasi = ?, " +
              "ukuran = ?, " +
              "daya_listrik = ?, " +
-             "pemilik = ?, " +
-             "no_telp_pemilik = ? " +
              "WHERE nomor_kamar = ?")) {
         
         pstmt.setDouble(1, kamarKos.getHargaBulan());
         pstmt.setString(2, kamarKos.getStatus());
         pstmt.setString(3, kamarKos.getFasilitas());
-        pstmt.setString(4, kamarKos.getLokasi());
-        pstmt.setString(5, kamarKos.getUkuran());
-        pstmt.setString(6, kamarKos.getDayaListrik());
-        pstmt.setString(7, kamarKos.getPemilik());
-        pstmt.setString(8, kamarKos.getNoTelpPemilik());
-        pstmt.setString(9, kamarKos.getNomorKamar());
+        pstmt.setString(4, kamarKos.getUkuran());
+        pstmt.setString(5, kamarKos.getDayaListrik());
+        pstmt.setString(6, kamarKos.getNomorKamar());
         
         int rowsAffected = pstmt.executeUpdate();
         

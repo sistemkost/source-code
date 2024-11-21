@@ -36,7 +36,7 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
     }
 
     private void setupTable() {
-        String[] columnNames = {"Nomor Kamar", "Harga per Bulan", "Status", "Fasilitas", "Lokasi Kos", "Ukuran", "Daya Listrik", "Nama Pemilik", "No Telpon Pemilik"};
+        String[] columnNames = {"Nomor Kamar", "Harga per Bulan", "Status", "Fasilitas", "Ukuran", "Daya Listrik"};
 
         tableModel = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -64,11 +64,8 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
                         hargaFormatted,
                         rs.getString("status"),
                         rs.getString("fasilitas"),
-                        rs.getString("lokasi"),
                         rs.getString("ukuran"),
-                        rs.getString("daya_listrik"),
-                        rs.getString("pemilik"),
-                        rs.getString("no_telp_pemilik")
+                        rs.getString("daya_listrik")
                     };
                     tableModel.addRow(rowData);
                 }
@@ -176,8 +173,7 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
             String sql = "SELECT * FROM kamar WHERE "
                     + "LOWER(nomor_kamar) LIKE ? OR "
                     + "LOWER(status) LIKE ? OR "
-                    + "LOWER(fasilitas) LIKE ? OR "
-                    + "LOWER(lokasi) LIKE ?";
+                    + "LOWER(fasilitas) LIKE ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             String searchPattern = "%" + searchText + "%";
@@ -195,11 +191,8 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
                     hargaFormatted,
                     rs.getString("status"),
                     rs.getString("fasilitas"),
-                    rs.getString("lokasi"),
                     rs.getString("ukuran"),
                     rs.getString("daya_listrik"),
-                    rs.getString("pemilik"),
-                    rs.getString("no_telp_pemilik")
                 };
                 tableModel.addRow(rowData);
             }
@@ -250,11 +243,8 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
                     hargaFormatted,
                     rs.getString("status"),
                     rs.getString("fasilitas"),
-                    rs.getString("lokasi"),
                     rs.getString("ukuran"),
                     rs.getString("daya_listrik"),
-                    rs.getString("pemilik"),
-                    rs.getString("no_telp_pemilik")
                 };
                 tableModel.addRow(rowData);
             }

@@ -14,22 +14,15 @@ public class KamarKos {
     private double hargaBulan;
     private String status;
     private String fasilitas;
-    private String lokasi;
     private String ukuran;
     private String dayaListrik;
-    private String pemilik;
-    private String noTelpPemilik;
 
-    public KamarKos(String nomorKamar, double hargaBulan, String status, String fasilitas, String lokasi, String ukuran, String dayaListrik, String pemilik, String noTelpPemilik) {
+    public KamarKos(String nomorKamar, double hargaBulan, String status, String fasilitas, String ukuran, String dayaListrik) {
         this.nomorKamar = nomorKamar;
         this.hargaBulan = hargaBulan;
         this.status = status;
         this.fasilitas = fasilitas;
-        this.lokasi = lokasi;
         this.ukuran = ukuran;
-        this.dayaListrik = dayaListrik;
-        this.pemilik = pemilik;
-        this.noTelpPemilik = noTelpPemilik;
     }
 
     public String getNomorKamar() {
@@ -48,24 +41,12 @@ public class KamarKos {
         return fasilitas;
     }
 
-    public String getLokasi() {
-        return lokasi;
-    }
-
     public String getUkuran() {
         return ukuran;
     }
 
     public String getDayaListrik() {
         return dayaListrik;
-    }
-
-    public String getPemilik() {
-        return pemilik;
-    }
-
-    public String getNoTelpPemilik() {
-        return noTelpPemilik;
     }
 
     public void setNomorKamar(String nomorKamar) {
@@ -84,23 +65,11 @@ public class KamarKos {
         this.fasilitas = fasilitas;
     }
 
-    public void setLokasi(String lokasi) {
-        this.lokasi = lokasi;
-    }
-
     public void setUkuran(String ukuran) {
         this.ukuran = ukuran;
     }
 
     public void setDayaListrik(String dayaListrik) {
         this.dayaListrik = dayaListrik;
-    }
-
-    public void setPemilik(String pemilik) {
-        this.pemilik = pemilik;
-    }
-
-    public void setNoTelpPemilik(String noTelpPemilik) {
-        this.noTelpPemilik = noTelpPemilik;
     }
 }

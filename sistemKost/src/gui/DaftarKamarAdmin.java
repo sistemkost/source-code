@@ -56,11 +56,8 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
                     hargaFormatted,
                     rs.getString("status"),
                     rs.getString("fasilitas"),
-                    rs.getString("lokasi"),
                     rs.getString("ukuran"),
                     rs.getString("daya_listrik"),
-                    rs.getString("pemilik"),
-                    rs.getString("no_telp_pemilik")
                 };
                 tableModel.addRow(rowData);
             }
@@ -69,8 +66,6 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error accessing database: " + e.getMessage());
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -177,7 +172,7 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "No Kamar", "Harga per Bulan", "Ketersediaan Kamar", "Fasilitas", "Lokasi", "Ukuran", "Daya Listrik", "Nama Pemilik", "No Telpon Pemilik"
+                "No Kamar", "Harga per Bulan", "Ketersediaan Kamar", "Fasilitas", "Ukuran", "Daya Listrik"
             }
         ));
         jScrollPane1.setViewportView(tabelDaftarKamar);
@@ -206,9 +201,6 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
 
             String fasilitas = JOptionPane.showInputDialog(this, "Masukkan Fasilitas Kamar:");
             if (fasilitas == null) return;
-
-            String lokasi = JOptionPane.showInputDialog(this, "Masukkan Lokasi Kamar:");
-            if (lokasi == null) return;
             
             String ukuran = JOptionPane.showInputDialog(this, "Masukkan Ukuran Kamar:");
             if (ukuran == null) return;
@@ -216,22 +208,13 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
             String dayaListrik = JOptionPane.showInputDialog(this, "Masukkan Daya Listrik Kamar:");
             if (dayaListrik == null) return;
             
-            String pemilik = JOptionPane.showInputDialog(this, "Masukkan Nama Pemilik: ");
-            if (pemilik == null) return;
-            
-            String noTelpPemilik = JOptionPane.showInputDialog(this, "Masukkan Nomor Telpon Pemilik: ");
-            if (noTelpPemilik == null) return;
-            
             // Buat objek KamarKos
-            var kamarBaru = new KamarKos(nomorKamar, hargaBulan, status, fasilitas, lokasi, ukuran, dayaListrik, pemilik, noTelpPemilik);
+            var kamarBaru = new KamarKos(nomorKamar, hargaBulan, status, fasilitas, ukuran, dayaListrik);
             kamarBaru.setNomorKamar(nomorKamar);
             kamarBaru.setHargaBulan(hargaBulan);
             kamarBaru.setStatus(status);
             kamarBaru.setFasilitas(fasilitas);
-            kamarBaru.setLokasi(lokasi);
             kamarBaru.setDayaListrik(dayaListrik);
-            kamarBaru.setPemilik(pemilik);
-            kamarBaru.setNoTelpPemilik(noTelpPemilik);
             
 
             // Simpan ke database menggunakan Repository
@@ -292,15 +275,12 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
             if (noTelpPemilik == null) return;
             
             // Buat objek KamarKos
-            var kamarBaru = new KamarKos(nomorKamar, hargaBulan, status, fasilitas, lokasi, ukuran, dayaListrik, pemilik, noTelpPemilik);
+            var kamarBaru = new KamarKos(nomorKamar, hargaBulan, status, fasilitas, ukuran, dayaListrik);
             kamarBaru.setNomorKamar(nomorKamar);
             kamarBaru.setHargaBulan(hargaBulan);
             kamarBaru.setStatus(status);
             kamarBaru.setFasilitas(fasilitas);
-            kamarBaru.setLokasi(lokasi);
             kamarBaru.setDayaListrik(dayaListrik);
-            kamarBaru.setPemilik(pemilik);
-            kamarBaru.setNoTelpPemilik(noTelpPemilik);
             
 
             // Simpan ke database menggunakan Repository
@@ -423,11 +403,8 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
                     hargaFormatted,
                     rs.getString("status"),
                     rs.getString("fasilitas"),
-                    rs.getString("lokasi"),
                     rs.getString("ukuran"),
                     rs.getString("daya_listrik"),
-                    rs.getString("pemilik"),
-                    rs.getString("no_telp_pemilik")
                 };
                 tableModel.addRow(rowData);
             }
@@ -444,9 +421,7 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
             String sql = "SELECT * FROM kamar WHERE "
             + "LOWER(nomor_kamar) LIKE ? OR "
             + "LOWER(status) LIKE ? OR "
-            + "LOWER(fasilitas) LIKE ? OR "
-            + "LOWER(lokasi) LIKE ?";
-
+            + "LOWER(fasilitas) LIKE ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             String searchPattern = "%" + searchText + "%";
             for (int i = 1; i <= 4; i++) {
@@ -463,11 +438,8 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
                     hargaFormatted,
                     rs.getString("status"),
                     rs.getString("fasilitas"),
-                    rs.getString("lokasi"),
                     rs.getString("ukuran"),
                     rs.getString("daya_listrik"),
-                    rs.getString("pemilik"),
-                    rs.getString("no_telp_pemilik")
                 };
                 tableModel.addRow(rowData);
             }

@@ -251,6 +251,7 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
                     rs.getString("status"),
                     rs.getString("fasilitas"),
                     rs.getString("lokasi"),
+                    rs.getString("ukuran"),
                     rs.getString("daya_listrik"),
                     rs.getString("pemilik"),
                     rs.getString("no_telp_pemilik")

@@ -55,7 +55,7 @@ public void update(KamarKos kamarKos) throws Exception {
              "status = ?, " +
              "fasilitas = ?, " +
              "ukuran = ?, " +
-             "daya_listrik = ?, " +
+             "daya_listrik = ? " +
              "WHERE nomor_kamar = ?")) {
         
         pstmt.setDouble(1, kamarKos.getHargaBulan());

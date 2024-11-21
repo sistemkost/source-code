@@ -258,21 +258,12 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
 
             String fasilitas = JOptionPane.showInputDialog(this, "Masukkan Fasilitas Kamar:");
             if (fasilitas == null) return;
-
-            String lokasi = JOptionPane.showInputDialog(this, "Masukkan Lokasi Kamar:");
-            if (lokasi == null) return;
             
             String ukuran = JOptionPane.showInputDialog(this, "Masukkan Ukuran Kamar:");
             if (ukuran == null) return;
             
             String dayaListrik = JOptionPane.showInputDialog(this, "Masukkan Daya Listrik Kamar:");
             if (dayaListrik == null) return;
-            
-            String pemilik = JOptionPane.showInputDialog(this, "Masukkan Nama Pemilik: ");
-            if (pemilik == null) return;
-            
-            String noTelpPemilik = JOptionPane.showInputDialog(this, "Masukkan Nomor Telpon Pemilik: ");
-            if (noTelpPemilik == null) return;
             
             // Buat objek KamarKos
             var kamarBaru = new KamarKos(nomorKamar, hargaBulan, status, fasilitas, ukuran, dayaListrik);
@@ -424,7 +415,7 @@ public class DaftarKamarAdmin extends javax.swing.JFrame {
             + "LOWER(fasilitas) LIKE ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             String searchPattern = "%" + searchText + "%";
-            for (int i = 1; i <= 4; i++) {
+            for (int i = 1; i <= 3; i++) {
                 stmt.setString(i, searchPattern);
             }
 

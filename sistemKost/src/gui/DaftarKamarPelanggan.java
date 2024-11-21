@@ -177,7 +177,7 @@ public final class DaftarKamarPelanggan extends javax.swing.JFrame {
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             String searchPattern = "%" + searchText + "%";
-            for (int i = 1; i <= 4; i++) {
+            for (int i = 1; i <= 3; i++) {
                 stmt.setString(i, searchPattern);
             }
 
